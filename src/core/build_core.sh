@@ -109,7 +109,7 @@ cd build
 	--host=$LFS_TGT \
 	--build=$(../scripts/config.guess) \
 	--enable-kernel=3.2 \
-	--with-headers=$TOOLS/include \
+	--with-headers=$TOOLS/include
 make $MAKEFLAGS
 make install
 cd ../..
