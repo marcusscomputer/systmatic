@@ -3,7 +3,7 @@
 # Prepare environment
 set +h
 umask 022
-LOCATION=/home/marcus-s/Developer/Projects/systmatic/depot/systmatic/src/core
+LOCATION=/mnt/Developer/Projects/systmatic/depot/systmatic/src/core
 TOOLS=$LOCATION/tools
 SYSROOT=$LOCATION/build
 LFS=/home/marcus-s/Developer/Projects/systmatic/depot/systmatic/src/core
@@ -77,6 +77,7 @@ cd build
 	--disable-libssp \
 	--disable-libvtv \
 	--disable-libstdcxx \
+	--disable-selinux \
 	--enable-languages=c,c++
 make $MAKEFLAGS
 make install
