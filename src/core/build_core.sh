@@ -3,14 +3,21 @@
 # Prepare environment
 set +h
 umask 022
-LOCATION=/mnt/Developer/Projects/systmatic/depot/systmatic/src/core
-TOOLS=$LOCATION/tools
-SYSROOT=$LOCATION/build
-LFS=/home/marcus-s/Developer/Projects/systmatic/depot/systmatic/src/core
+ROOT=/mnt/Developer/Projects/systmatic/depot/systmatic
+BUILD=$ROOT/build
+TOOLS=$ROOT/build/tmptoolchain
+SYSROOT=$BUILD
+LFS=$ROOT/src/core
 LC_ALL=POSIX
 LFS_TGT=$(uname -m)-systmatic-linux-gnu
 MAKEFLAGS="-j3"
 TARS=tarballs
+
+# Remove previous build
+rm -rf $SYSROOT
+# Create directories
+mkdir $BUILD
+mkdir $TOOLS
 
 # Enter tarball folder
 cd $TARS
@@ -77,7 +84,6 @@ cd build
 	--disable-libssp \
 	--disable-libvtv \
 	--disable-libstdcxx \
-	--disable-selinux \
 	--enable-languages=c,c++
 make $MAKEFLAGS
 make install
@@ -110,12 +116,14 @@ cd build
 	--host=$LFS_TGT \
 	--build=$(../scripts/config.guess) \
 	--enable-kernel=3.2 \
+	--without-selinux \
 	--with-headers=$TOOLS/include
 make $MAKEFLAGS
 make install
 cd ../..
 rm -rf glibc-2.31
 echo "## DONE GLIBC"
+
 
 # ------------------------------------------------------------------------------
 
