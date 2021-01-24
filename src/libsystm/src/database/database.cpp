@@ -94,7 +94,7 @@ void systm::database::updateFieldInRow(int rowNumber, int fieldNumber, string co
 			newDouble = atof(content.c_str());
 			Rows[rowNumber].RowFields[fieldNumber].fieldDouble = newDouble;
 		}
-		if (datatype == SYSTM_DB_STRING)
+		if (datatype == SYSTM_DB_STRING || datatype == SYSTM_DB_ARRAY)
 		{ Rows[rowNumber].RowFields[fieldNumber].fieldString = content; }
 	}
 }
@@ -190,7 +190,7 @@ void systm::database::loadDatabase(string filename)
 					{ float fldval = FileIO->readFloat(); fld.fieldFloat = fldval; }
 					if (RowDatatypes[j-1] == SYSTM_DB_DOUBLE)
 					{ double fldval = FileIO->readDouble(); fld.fieldDouble = fldval; }
-					if (RowDatatypes[j-1] == SYSTM_DB_STRING)
+					if (RowDatatypes[j-1] == SYSTM_DB_STRING || RowDatatypes[j-1] == SYSTM_DB_ARRAY)
 					{ string fldval = FileIO->readString(); fld.fieldString = fldval; }
 
 					// Add the field
@@ -273,7 +273,7 @@ void systm::database::saveDatabase(string filename)
 				{ FileIO->writeFloat(Rows[i-1].RowFields[j-1].fieldFloat); }
 				if (RowDatatypes[j-1] == SYSTM_DB_DOUBLE) // double
 				{ FileIO->writeDouble(Rows[i-1].RowFields[j-1].fieldDouble); }
-				if (RowDatatypes[j-1] == SYSTM_DB_STRING) // string
+				if (RowDatatypes[j-1] == SYSTM_DB_STRING || RowDatatypes[j-1] == SYSTM_DB_ARRAY) // string
 				{ FileIO->writeString(Rows[i-1].RowFields[j-1].fieldString); }
 			}
 		}

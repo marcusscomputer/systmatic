@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROOT="/home/marcus-s/Developer/systmatic/src/libsystm/src"
+ROOT="/home/marcus-s/Developer/Projects/systmatic/depot/systmatic/src/libsystm/src"
 FLAGS="-fPIC -shared -std=c++11 -fpermissive -O2 -w"
 INC="-I$ROOT"
 

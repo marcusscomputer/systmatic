@@ -6,7 +6,7 @@ OUTPUT="-o build/client/systmpack"
 LIBFOLDER="-L../libsystm/build"
 LIBS="-lsystm -lz"
 
-ROOT="/home/marcus-s/Developer/systmatic/src/systmpack/src/client/src"
+ROOT="/home/marcus-s/Developer/Projects/systmatic/depot/systmatic/src/systmpack/src/client/src"
 
 SRC="\
 $ROOT/main.cpp \
